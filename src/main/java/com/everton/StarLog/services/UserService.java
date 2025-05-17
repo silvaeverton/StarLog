@@ -1,12 +1,10 @@
 package com.everton.StarLog.services;
 
-import ch.qos.logback.core.net.server.Client;
 import com.everton.StarLog.entities.User;
 import com.everton.StarLog.exceptions.StarLogException;
 import com.everton.StarLog.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
 
-    @Autowired
-    private UserRepository repository;
+    private final UserRepository repository;
 
     public User createUser(User user){
         return repository.saveAndFlush(user);
