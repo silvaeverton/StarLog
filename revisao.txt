@@ -1,0 +1,15 @@
+1 - Classe RestTemplateConfig
+Não devemos usar interceptadores para esse tipo de problema, o resttemplate provisionado acopla todo o sistema
+você esta dizendo que todas as outras requisições que não sejam para o cliente serão interceptadas e adicionarão esse header de aceite.
+o correto é criar no serviço específico o aceite e não no config geral. Interceptadores são para log, autenticação, etc.
+
+2 - Classe FilmController metodo favorite, porque usr Set<>? Qual a motivação desse tipo de coleção? Porquê não Lista?
+
+3 - Classe FilmsResponse não é uma entidade, é um DTO, não deveria estar no pacote entity.
+
+4 - Classe User, cardinalidade N.N com Film,  por que Set<>? Qual a motivação desse tipo de coleção? Porquê não Lista?
+
+5 - Pacote model e dtos, os dois não representam o mesmo objetivo? Porquê Error não está em dtos ou os dtos não estão em model? Estude um pouco esses conceitos.
+
+6 - Classe FilmService está anotada com @RequiredArgsConstructor e @Autowired, o correto é usar apenas uma das duas, o ideal é usar RequiredArgsConstructor e retirar o Autowired, pois o lombok já faz a injeção de dependência. O mesmo vale para a classe UserService.
+
